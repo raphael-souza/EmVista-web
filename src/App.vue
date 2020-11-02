@@ -8,7 +8,7 @@
 
     <v-main>
       <v-app>
-        <v-navigation-drawer app>
+        <v-navigation-drawer app >
           <!-- -->
            <router-link to="/HelloWorld">Hello</router-link>
            <br>
@@ -21,7 +21,7 @@
         </v-app-bar>
 
         <!-- Sizes your content based upon application components -->
-        <v-main>
+        <v-main id="main" style="margin-right: 5%">
           <!-- Provides the application the proper gutter -->
           <v-container fluid>
             <!-- If using vue-router -->
