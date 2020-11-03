@@ -8,11 +8,16 @@
 
     <v-main>
       <v-app>
-        <v-navigation-drawer app >
+        <v-navigation-drawer app>
           <!-- -->
-           <router-link to="/HelloWorld">Hello</router-link>
-           <br>
-           <router-link to="/Task">Task</router-link>
+          <div class="left-bar">
+            <router-link to="/hello-world">Hello</router-link>
+            <br>
+            <router-link to="/task">Task</router-link>
+            <br>
+            <router-link to="/new-financial-asset"> Inserir Ativo </router-link>
+          </div>
+
         </v-navigation-drawer>
 
         <v-app-bar app>
@@ -53,3 +58,10 @@ export default {
   }),
 };
 </script>
+
+<style >
+.left-bar {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+</style>
