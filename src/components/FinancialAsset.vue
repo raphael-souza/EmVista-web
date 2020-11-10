@@ -34,6 +34,8 @@
           v-model="asset.code"
           :loading="loading"
           :items="items"
+          item-text="name"
+          item-value="code"
           :search-input.sync="search"
           cache-items
           class="mx-4"
@@ -52,7 +54,7 @@
 
       <v-col cols="6">
         <v-slider
-        v-model="asset.amount"
+          v-model="asset.amount"
           label="quantidade"
           thumb-label="always"
         ></v-slider>
@@ -69,7 +71,7 @@
             ></v-text-field>
           </v-col>
         </v-row>
-        
+
         <v-row>
           <v-col cols="4">
             <v-subheader>Total Investido</v-subheader>
@@ -81,24 +83,12 @@
             ></v-text-field>
           </v-col>
         </v-row>
-
-        
       </v-col>
 
-      <v-btn
-        class="mx-2"
-        fab
-        dark
-        color="indigo"
-        @click="saveAsset()"
-      >
-      <v-icon dark>
-        mdi-plus
-      </v-icon>
-    </v-btn>
-
+      <v-btn class="mx-2" fab dark color="indigo" @click="saveAsset()">
+        <v-icon dark> mdi-plus </v-icon>
+      </v-btn>
     </v-col>
-    
 
     <v-sheet>{{ asset }} </v-sheet>
   </v-row>
@@ -123,66 +113,73 @@ export default {
       items: [],
       search: null,
       select: null,
-      states: [
-        "Alabama",
-        "Alaska",
-        "American Samoa",
-        "Arizona",
-        "Arkansas",
-        "California",
-        "Colorado",
-        "Connecticut",
-        "Delaware",
-        "District of Columbia",
-        "Federated States of Micronesia",
-        "Florida",
-        "Georgia",
-        "Guam",
-        "Hawaii",
-        "Idaho",
-        "Illinois",
-        "Indiana",
-        "Iowa",
-        "Kansas",
-        "Kentucky",
-        "Louisiana",
-        "Maine",
-        "Marshall Islands",
-        "Maryland",
-        "Massachusetts",
-        "Michigan",
-        "Minnesota",
-        "Mississippi",
-        "Missouri",
-        "Montana",
-        "Nebraska",
-        "Nevada",
-        "New Hampshire",
-        "New Jersey",
-        "New Mexico",
-        "New York",
-        "North Carolina",
-        "North Dakota",
-        "Northern Mariana Islands",
-        "Ohio",
-        "Oklahoma",
-        "Oregon",
-        "Palau",
-        "Pennsylvania",
-        "Puerto Rico",
-        "Rhode Island",
-        "South Carolina",
-        "South Dakota",
-        "Tennessee",
-        "Texas",
-        "Utah",
-        "Vermont",
-        "Virgin Island",
-        "Virginia",
-        "Washington",
-        "West Virginia",
-        "Wisconsin",
-        "Wyoming",
+      assetsListB3: [
+        { name: "AMBEV S/A", code: "ABEV3" },
+        { name: "AZUL", code: "AZUL4" },
+        { name: "B2W DIGITAL", code: "BTOW3" },
+        { name: "B3", code: "B3SA3" },
+        { name: "BB SEGURIDADE", code: "BBSE3" },
+        { name: "BR MALLS PAR", code: "VRML3" },
+        { name: "BRADESCO", code: "BBDC4" },
+        { name: "BRADESCO", code: "BBDC3" },
+        { name: "BRADESPAR", code: "BRAP4" },
+        { name: "BANCO DO BRASIL", code: "BBAS3" },
+        { name: "BRASKEM", code: "BRKM5" },
+        { name: "BRF S/A", code: "BRFS3" },
+        { name: "CCR S/A", code: "CCRO3" },
+        { name: "CEMIG", code: "CMIG4" },
+        { name: "CIELO", code: "CIEL3" },
+        { name: "COSAN", code: "CSAN3" },
+        { name: "CVC BRASIL", code: "CVCB3" },
+        { name: "CYRELA REALT", code: "CYRE3" },
+        { name: "ECORODOVIAS", code: "ECOR3" },
+        { name: "ELETROBRAS", code: "ELET3" },
+        { name: "ELETROBRAS", code: "ELET6" },
+        { name: "EMBRAER", code: "EMBR3" },
+        { name: "ENERGIAS BR", code: "ENBR3" },
+        { name: "ENGIE BRASIL", code: "ENGIE3" },
+        { name: "EQUATORIAL", code: "EQTL3" },
+        { name: "ESTACIO PART", code: "YDUQ3" },
+        { name: "FLEURY", code: "FLRY3" },
+        { name: "GERDAU", code: "GGBR4" },
+        { name: "GERDAU MET", code: "GOAU4" },
+        { name: "GOL", code: "GOLL4" },
+        { name: "HYPERA", code: "HYPE3" },
+        { name: "IGUATEMI", code: "IGTA3" },
+        { name: "IRB BRASIL RE", code: "IRBR3" },
+        { name: "ITAUSA", code: "ITSA4" },
+        { name: "ITAU UNIBANCO", code: "ITUB4" },
+        { name: "JBS", code: "JBSS3" },
+        { name: "KLABIN S/A", code: "KLBN11" },
+        { name: "KROTON", code: "KROT3" },
+        { name: "LOCALIZA", code: "RENT3" },
+        { name: "LOJAS AMERICANAS", code: "LAME4" },
+        { name: "LOJAS RENNER", code: "LREN3" },
+        { name: "MAGAZINE LUIZA", code: "MGLU3" },
+        { name: "MARFRIG", code: "MRFG3" },
+        { name: "MRV", code: "MRVE3" },
+        { name: "MULTIPLAN", code: "MULT3" },
+        { name: "NATURA", code: "NATU3" },
+        { name: "PÃO DE AÇÚCAR - CBD", code: "PCAR4" },
+        { name: "PETROBRAS", code: "PETR4" },
+        { name: "PETROBRAS", code: "PETR3" },
+        { name: "PETROBRAS BR", code: "BRDT3" },
+        { name: "QUALICORP", code: "QUAL3" },
+        { name: "RAIADROGASIL", code: "RADL3" },
+        { name: "RUMO S/A", code: "RAIL3" },
+        { name: "SABESP", code: "SBSP3" },
+        { name: "SANTANDER BR", code: "SANB11" },
+        { name: "SID NACIONAL", code: "CSNA3" },
+        { name: "SMILES", code: "SMLS3" },
+        { name: "SUZANO S/A", code: "SUZB5" },
+        { name: "TAESA", code: "TAEE11" },
+        { name: "TELEF BRASIL", code: "VIVT4" },
+        { name: "TIM PART S/A", code: "TIMP3" },
+        { name: "ULTRAPAR", code: "UGPA3" },
+        { name: "USIMINAS", code: "USIM5" },
+        { name: "VALE", code: "VALE3" },
+        { name: "VIA VAREJO", code: "VVAR3" },
+        { name: "WEG", code: "WEGE3" },
       ],
     };
   },
@@ -213,18 +210,19 @@ export default {
       this.loading = true;
       // Simulated ajax query
       setTimeout(() => {
-        this.items = this.states.filter((e) => {
-          return (e || "").toLowerCase().indexOf((v || "").toLowerCase()) > -1;
+        this.items = this.assetsListB3.filter((e) => {
+          return (e.name || "").toLowerCase().indexOf((v.name || "").toLowerCase()) > -1;
         });
         this.loading = false;
       }, 500);
     },
     calculateInvestedValue() {
-      this.asset.amountInvested =  this.asset.amount * this.asset.purchasePrice;
+      this.asset.amountInvested = this.asset.amount * this.asset.purchasePrice;
+      console.log('-------- > ' +  this.asset.amountInvested )
     },
     saveAsset() {
       // request this.asset
-    }
+    },
   },
 };
 </script>
