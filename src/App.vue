@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">emVI$TA</div>
+      <div class="d-flex align-center">emvi$ta 168</div>
 
       <v-spacer></v-spacer>
     </v-app-bar>
