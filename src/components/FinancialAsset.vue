@@ -94,7 +94,10 @@
   </v-row>
 </template>
 <script>
+import axios from "axios/dist/axios";
+
 export default {
+  
   data() {
     return {
       tab: null,
@@ -222,6 +225,15 @@ export default {
     },
     saveAsset() {
       // request this.asset
+      console.log('save my assets')
+      axios.post("http://localhost:3333/financial-asset", this.asset).then(
+        (response) => {
+          if (response) console.log('ok');
+        },
+        (error) => {
+          console.log('error Save Financial Asset - ' + error );
+        }
+      );
     },
   },
 };
