@@ -12,53 +12,45 @@
           <v-row>
             <vcol cols="4">
               <v-row>
-                <vcol cols="3"> <v-icon>request_quote</v-icon> Preço </vcol>
+                <vcol cols="3" class="d-flex justify-space-between caption"> <v-icon color="warning">request_quote</v-icon> Preço </vcol>
                 <vcol cols="3">
-                  <span>{{asset.purchasePrice}}</span>
+                  <span class="subtitle-2">{{asset.purchasePrice}}</span>
                 </vcol>
               </v-row>
 
               <v-row>
-                <vcol cols="3"> <v-icon>today</v-icon> data da Compra</vcol>
+                <vcol cols="3" class="d-flex justify-space-between caption"> <v-icon color="info">today</v-icon> data da Compra</vcol>
                 <vcol cols="3">
-                  <span>{{asset.purchaseDate}}</span>
+                  <span class="subtitle-2">{{asset.purchaseDate.split("T")[0]}}</span>
                 </vcol>
               </v-row>
 
               <v-row>
-                <vcol cols="3"> <v-icon>vertical_split</v-icon> Quantidade </vcol>
+                <vcol cols="3" class="d-flex justify-space-between caption"> <v-icon color="success">vertical_split</v-icon> Quantidade </vcol>
                 <vcol cols="3">
-                  <span>{{asset.amount}}</span>
+                  <span class="subtitle-2">{{asset.amount}}</span>
                 </vcol>
               </v-row>
 
               <v-row>
-                <vcol cols="3"> <v-icon>request_quote</v-icon> </vcol>
+                <vcol cols="3" class="d-flex justify-space-between caption"> <v-icon color="accent">request_quote</v-icon> </vcol>
                 <vcol cols="3">
-                  <span>{{asset.purchasePrice}}</span>
+                  <span class="subtitle-2">{{asset.purchasePrice}}</span>
                 </vcol>
               </v-row>
 
                <v-row>
-                <vcol cols="3"> <v-icon>trending_up</v-icon> total Investido </vcol>
+                <vcol cols="3" class="d-flex justify-space-between caption"> <v-icon color="primary">trending_up</v-icon> total Investido </vcol>
                 <vcol cols="3">
-                  <span>{{asset.amountInvested}}</span>
+                  <span class="subtitle-2" color="secondary">{{asset.amountInvested}}</span>
                 </vcol>
               </v-row>
             </vcol>
-
-            <vcol cols="4">
-              Campo do meio 
-            </vcol>
-            
-            <vcol cols="4">
-              campo Final
+            <vcol cols="8">
+             
             </vcol>
 
           </v-row>
-          {{ asset | json }}
-
-
 
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -73,19 +65,31 @@ import axios from "axios/dist/axios";
 
 export default {
   name: "Manage",
-  extends: Bar,
   data: () => ({
-    assetsList: []
+    assetsList: [],
   }),
   mounted() {
-     axios.get("http://localhost:3333/financial-assets").then((response) => {
+    axios.get("http://localhost:3333/financial-assets").then((response) => {
       this.assetsList = response.data;
     });
   },
   methods: {
-    getAssets() {
-
-    }
+    getAssets() {},
   },
 };
 </script>
+
+<style >
+.subtitle-2 {
+  padding: 2px 0px 0px 7px;
+}
+.caption {
+  padding: 2px;
+}
+.v-icon{
+  font-size: 17px;
+  color: #909192;
+    margin-right: 2px;
+}
+
+</style>
