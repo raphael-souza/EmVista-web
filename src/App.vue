@@ -11,9 +11,9 @@
         <v-navigation-drawer app>
           <!-- -->
           <div class="left-bar">
-            <router-link to="/hello-world">Hello</router-link>
+            <router-link to="/new-user">Novo usuário</router-link>
             <br>
-            <router-link to="/task">Task</router-link>
+            <!-- <router-link to="/task">Task</router-link> -->
             <br>
             <router-link to="/new-financial-asset"> Inserir Ativo </router-link>
           </div>
@@ -22,7 +22,7 @@
 
         <v-app-bar app>
           <!-- -->
-           <router-link to="/foo">Go to Foo</router-link>
+           <!-- <router-link to="/foo">Go to Foo</router-link> -->
         </v-app-bar>
 
         <!-- Sizes your content based upon application components -->
@@ -44,8 +44,6 @@
 </template>
 
 <script>
-
-
 export default {
   name: "App",
 

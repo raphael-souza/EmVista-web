@@ -48,6 +48,7 @@
       <!-- Data da compra  -->
       <v-col cols="6">
         <v-row>
+          <span>Data da compra</span>
           <v-date-picker v-model="asset.purchaseDate"></v-date-picker>
         </v-row>
       </v-col>
@@ -189,12 +190,12 @@ export default {
   created() {
     const valueResponse = [
       { id: "1", icon: "mdi-inbox", text: "Ações" },
-      { id: "2", icon: "mdi-inbox", text: "Opções" },
-      { id: "3", icon: "mdi-inbox", text: "Termo de Ações" },
-      { id: "4", icon: "mdi-inbox", text: "Criptomoedas" },
-      { id: "52", icon: "mdi-inbox", text: "Poupança" },
-      { id: "6", icon: "mdi-inbox", text: "Tesouro Direto" },
-      { id: "7", icon: "mdi-inbox", text: "CDB/LCI LCA/LC/LF" },
+      // { id: "2", icon: "mdi-inbox", text: "Opções" },
+      // { id: "3", icon: "mdi-inbox", text: "Termo de Ações" },
+      // { id: "4", icon: "mdi-inbox", text: "Criptomoedas" },
+      // { id: "52", icon: "mdi-inbox", text: "Poupança" },
+      // { id: "6", icon: "mdi-inbox", text: "Tesouro Direto" },
+      // { id: "7", icon: "mdi-inbox", text: "CDB/LCI LCA/LC/LF" },
     ];
     this.assetOptions.push(valueResponse);
     this.assetOptions.push(valueResponse);
