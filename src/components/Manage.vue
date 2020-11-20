@@ -2,6 +2,8 @@
 <template>
 <!-- Listar Ações  -->
   <v-row justify="center">
+              <ChartBar> </ChartBar>
+
     <v-expansion-panels popout>
       <v-expansion-panel
         v-for="(asset,i) in assetsList"
@@ -47,7 +49,7 @@
               </v-row>
             </vcol>
             <vcol cols="8">
-             
+
             </vcol>
 
           </v-row>
@@ -62,8 +64,12 @@
 
 <script>
 import axios from "axios/dist/axios";
+import ChartBar from "./charts/Bar";
 
 export default {
+  components: {
+    ChartBar
+  },
   name: "Manage",
   data: () => ({
     assetsList: [],

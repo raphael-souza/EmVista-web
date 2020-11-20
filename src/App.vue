@@ -11,6 +11,8 @@
         <v-navigation-drawer app>
           <!-- -->
           <div class="left-bar">
+            <router-link to="/">Dashboard</router-link>
+            <br>
             <router-link to="/new-user">Novo usuário</router-link>
             <br>
             <!-- <router-link to="/task">Task</router-link> -->
