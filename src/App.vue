@@ -1,13 +1,15 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">emvi$ta 168</div>
-
-      <v-spacer></v-spacer>
-    </v-app-bar>
-
     <v-main>
       <v-app>
+
+        <v-app-bar app>
+         <strong>Total:</strong> R$ 196,06
+         <strong>Variação:</strong> + R$ 6,06
+         <strong> Variação:</strong> + 3,02%
+
+        </v-app-bar>
+
         <v-navigation-drawer app>
           <!-- -->
           <div class="left-bar">
@@ -22,10 +24,7 @@
 
         </v-navigation-drawer>
 
-        <v-app-bar app>
-          <!-- -->
-           <!-- <router-link to="/foo">Go to Foo</router-link> -->
-        </v-app-bar>
+       
 
         <!-- Sizes your content based upon application components -->
         <v-main id="main" style="margin-right: 5%">

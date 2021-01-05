@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <!-- Tipo de Ativo -->
+    <!-- Tipo de Ativo
     <v-col cols="12">
       <v-menu transition="scroll-y-transition">
         <template v-slot:activator="{ on, attrs }">
@@ -28,7 +28,7 @@
     </v-col>
 
     <v-col cols="10" v-if="asset.type == '1'">
-      <!-- Codigo -->
+     
       <v-col cols="12">
         <v-autocomplete
           v-model="asset.code"
@@ -45,7 +45,6 @@
           label="Selecione o código"
         ></v-autocomplete>
       </v-col>
-      <!-- Data da compra  -->
       <v-col cols="6">
         <v-row>
           <span>Data da compra</span>
@@ -89,10 +88,71 @@
       <v-btn class="mx-2" fab dark color="indigo" @click="saveAsset()">
         <v-icon dark> mdi-plus </v-icon>
       </v-btn>
-    </v-col>
+    </v-col> -->
 
+    <v-card class="card-new-asset" >
+      <v-card-title> Novo Investimento </v-card-title>
+      <v-list-item-subtitle>Escolha o novo investimento</v-list-item-subtitle>
+      <v-row justify="space-around">
+        <v-text-field
+          label="Nome do Papel"
+        ></v-text-field>
+
+        <v-autocomplete
+          v-model="asset.code"
+          :loading="loading"
+          :items="items"
+          item-text="name"
+          item-value="code"
+          :search-input.sync="search"
+          cache-items
+          class="mx-4"
+          flat
+          hide-no-data
+          hide-details
+          label="Selecione o código"
+        ></v-autocomplete>
+      </v-row>
+
+      <v-row>
+        <v-text-field
+          label="Banco ou Corretora"
+        ></v-text-field>
+      </v-row>
+
+      <v-row>
+        <v-text-field
+          label="Data da Operação"
+        ></v-text-field>
+      </v-row>
+
+      <v-row>
+        <v-text-field
+          label="Cotação"
+        ></v-text-field>
+      </v-row>
+
+      <v-row>
+        <v-text-field
+          label="Unidades"
+        ></v-text-field>
+      </v-row>
+
+      <v-row>
+        <v-text-field
+          label="Custo Operacional"
+        ></v-text-field>
+      </v-row>
+
+    params Request
     <v-sheet>{{ asset }} </v-sheet>
+
+    </v-card>
   </v-row>
+
+
+  
+
 </template>
 <script>
 import axios from "axios/dist/axios";
@@ -239,3 +299,9 @@ export default {
   },
 };
 </script>
+
+<style >
+  .card-new-asset {
+    padding: 50px;
+  }
+</style>
