@@ -24,8 +24,6 @@
 
         </v-navigation-drawer>
 
-       
-
         <!-- Sizes your content based upon application components -->
         <v-main id="main" style="margin-right: 5%">
           <!-- Provides the application the proper gutter -->
