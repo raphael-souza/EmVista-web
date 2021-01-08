@@ -2,7 +2,7 @@
 <template>
 <!-- Listar Ações  -->
   <v-row justify="center">
-              <ChartBar> </ChartBar>
+              <!-- <ChartBar> </ChartBar> -->
 
     <v-expansion-panels popout>
       <v-expansion-panel
@@ -64,11 +64,11 @@
 
 <script>
 import axios from "axios/dist/axios";
-import ChartBar from "./charts/Bar";
+// import ChartBar from "./charts/Bar";
 
 export default {
   components: {
-    ChartBar
+    // ChartBar
   },
   name: "Manage",
   data: () => ({
