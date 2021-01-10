@@ -2,7 +2,7 @@
 <template>
   <!-- Listar Ações  -->
   <div id="manage">
-    <v-row justify="center">
+    <v-row justify="left">
       <v-col cols="4">
         <v-expansion-panels popout>
           <v-expansion-panel v-for="(asset, i) in assetsList" :key="i">
