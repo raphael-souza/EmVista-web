@@ -1,11 +1,11 @@
 
 
 <script>
-import {Line} from 'vue-chartjs'
+import {Doughnut} from 'vue-chartjs'
 
 export default {
-  extends: Line,
-  name: "ChartBar",
+  extends: Doughnut,
+  name: "ChartDoughnut",
   mounted () {
     // Overwriting base render method with actual data.
     this.renderChart({
