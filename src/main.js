@@ -15,33 +15,34 @@ Vue.config.productionTip = false
 
 const router = new VueRouter({
   routes: [
-    {
-      path: "/",
-      component: HomeLogin
+    { path: "/home", component: HomeLogin },
+    { path: "/dashboard", component: Dashboard,
+      children: [
+        {
+          path: "manage",
+          component: Manage
+        },
+        {
+          path: "new-user", 
+          component: FormUser
+    
+        }, 
+        {
+          path: "task", 
+          component: Task
+        },
+        {
+          path: "new-financial-asset",
+          component: FinancialAsset
+        },
+        {path: 'foo', component: Dashboard }
+      ]
+    
     },
-    {
-      path: "/dashboard",
-      component: Dashboard
-    },
-    {
-      path: "/manage",
-      component: Manage
-    },
-    {
-      path: "/new-user", 
-      component: FormUser
-
-    }, 
-    {
-      path: "/task", 
-      component: Task
-    },
-    {
-      path: "/new-financial-asset",
-      component: FinancialAsset
-    }
+    
     
   ]
+  
 })
 new Vue({
   vuetify ,

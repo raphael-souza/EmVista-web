@@ -15,19 +15,19 @@
           <div class="left-bar">
             <router-link to="/dashboard">Dashboard</router-link>
             <br>
-             <router-link to="/manage">Meus Ativos</router-link>
+             <router-link to="/dashboard/manage">Meus Ativos</router-link>
             <br>
-            <router-link to="/new-user">Novo usuário</router-link>
+            <router-link to="/dashboard/new-user">Novo usuário</router-link>
             <br>
             <!-- <router-link to="/task">Task</router-link> -->
             <br>
-            <router-link to="/new-financial-asset"> Inserir Ativo </router-link>
+            <router-link to="/dashboard/new-financial-asset"> Inserir Ativo </router-link>
           </div>
 
         </v-navigation-drawer>
 
         <!-- Sizes your content based upon application components -->
-        <v-main id="main" style="margin-right: 5%">
+        <v-main id="main">
           <!-- Provides the application the proper gutter -->
           <v-container fluid>
             <!-- If using vue-router -->
