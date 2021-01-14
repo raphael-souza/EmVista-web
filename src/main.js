@@ -4,10 +4,11 @@ import vuetify from './plugins/vuetify';
 import  VueRouter from 'vue-router';
 import FormUser from './components/FormUser.vue';
 import Task from './components/Task.vue'
-import FinancialAsset from './components/FinancialAsset.vue';
+import NewFinancialAsset from './components/NewFinancialAsset.vue';
 import Manage from './components/Manage.vue';
 import Dashboard from './components/Dashboard';
-import HomeLogin from './components/HomeLogin.vue'
+import Home from './components/Home.vue';
+import Login from './components/Login.vue';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 
 Vue.use(VueRouter);
@@ -15,11 +16,28 @@ Vue.config.productionTip = false
 
 const router = new VueRouter({
   routes: [
-    { path: "/home", component: HomeLogin },
+    { path: "/home", component: Home,
+      children: [
+        {
+          path: "",
+          component: Login
+        },
+        {
+          path: "sign-in", 
+          component: FormUser
+    
+        }, 
+      ]
+    },
+    { path: "/", component: Home },
     { path: "/dashboard", component: Dashboard,
       children: [
         {
           path: "manage",
+          component: Manage
+        },
+        {
+          path: "",
           component: Manage
         },
         {
@@ -33,7 +51,7 @@ const router = new VueRouter({
         },
         {
           path: "new-financial-asset",
-          component: FinancialAsset
+          component: NewFinancialAsset
         },
         {path: 'foo', component: Dashboard }
       ]

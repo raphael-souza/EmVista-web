@@ -2,10 +2,23 @@
   <v-row>   
     <v-card class="card-new-asset" >
       <v-card-title> Novo Investimento </v-card-title>
-      <v-list-item-subtitle>Escolha o novo investimento</v-list-item-subtitle>
 
       <v-row>
-        <v-menu transition="scroll-y-transition">
+        <v-select
+          v-model="asset.type"
+          :hint="asset.text"
+          :items="assetOptions"
+          item-text="text"
+          item-value="id"
+          label="Tipo de ativo"
+          persistent-hint
+          return-object
+          single-line
+          dense
+          filled
+          rounded
+        ></v-select>
+        <!-- <v-menu transition="scroll-y-transition">
           <template v-slot:activator="{ on, attrs }">
             <v-btn color="primary" class="ma-2" v-bind="attrs" v-on="on">
               Tipo de Ativo
@@ -14,7 +27,7 @@
           <v-list dense>
             <v-list-item-group v-model="asset.type" color="primary">
               <v-list-item
-                v-for="(asset, index) in assetOptions[0]"
+                v-for="(asset, index) in assetOptions"
                 :key="index"
                 :value="asset.id"
               >
@@ -27,7 +40,7 @@
               </v-list-item>
             </v-list-item-group>
           </v-list>
-        </v-menu>
+        </v-menu> -->
       </v-row>
 
       <v-row >
@@ -39,11 +52,10 @@
           item-value="code"
           :search-input.sync="search"
           cache-items
-          class="mx-4"
           dense
           filled
           rounded
-          label="Selecione o código"
+          label="Código do Ativo"
         ></v-autocomplete>
       </v-row>
 
@@ -56,18 +68,6 @@
           rounded
         ></v-text-field>
       </v-row>
-
-      <v-row>
-        <v-text-field
-          label="Data da Operação"
-          v-model="asset.purchaseDate"
-          dense
-          filled
-          rounded
-          type="date"
-        ></v-text-field>
-      </v-row>
-
       <v-row>
         <v-text-field
           dense
@@ -81,13 +81,27 @@
       </v-row>
 
       <v-row>
-        <v-text-field
-          dense
-          filled
-          rounded
-          label="Unidades"
-          v-model="asset.amount"
-        ></v-text-field>
+        <v-col cols="7">
+          <v-text-field
+            label="Data"
+            v-model="asset.purchaseDate"
+            dense
+            filled
+            rounded
+            type="date"
+          >
+          </v-text-field>
+        </v-col>
+
+        <v-col cols="5">
+          <v-text-field
+            dense
+            filled
+            rounded
+            label="Unidades"
+            v-model="asset.amount"
+          ></v-text-field>
+        </v-col>
       </v-row>
 
       <v-row>
@@ -101,19 +115,16 @@
           v-model="asset.amountInvested"
         ></v-text-field>
       </v-row>
-      <v-btn class="mx-2" dark color="indigo" @click="saveAsset()">
+      <v-btn class="mx-2" dark color="primary" @click="saveAsset()">
         Finalizar 
       </v-btn>
-    params Request
-    <v-sheet>{{ asset }} </v-sheet>
+    <br>
+    <v-sheet style="font-size: 12px;     background: bisque;">{{ asset }} </v-sheet>
 
     </v-card>
   </v-row>
-
-
-  
-
 </template>
+
 <script>
 import axios from "axios/dist/axios";
 
@@ -123,9 +134,17 @@ export default {
     return {
       tab: null,
       selectedItem: "",
-      assetOptions: [],
+        assetOptions: [
+        { id: "1", icon: "mdi-inbox", text: "Ações" },
+        { id: "2", icon: "mdi-inbox", text: "Opções" },
+        { id: "3", icon: "mdi-inbox", text: "Termo de Ações" },
+        { id: "4", icon: "mdi-inbox", text: "Criptomoedas" },
+        { id: "52", icon: "mdi-inbox", text: "Poupança" },
+        { id: "6", icon: "mdi-inbox", text: "Tesouro Direto" },
+        { id: "7", icon: "mdi-inbox", text: "CDB/LCI LCA/LC/LF" },
+      ],
       asset: {
-        type: "",
+        type: {type: 1, text: "Ações"},
         code: "",
         broker: "",
         purchaseDate: "",
@@ -209,18 +228,7 @@ export default {
     };
   },
   created() {
-    const valueResponse = [
-      { id: "1", icon: "mdi-inbox", text: "Ações" },
-      { id: "2", icon: "mdi-inbox", text: "Opções" },
-      { id: "3", icon: "mdi-inbox", text: "Termo de Ações" },
-      { id: "4", icon: "mdi-inbox", text: "Criptomoedas" },
-      { id: "52", icon: "mdi-inbox", text: "Poupança" },
-      { id: "6", icon: "mdi-inbox", text: "Tesouro Direto" },
-      { id: "7", icon: "mdi-inbox", text: "CDB/LCI LCA/LC/LF" },
-    ];
-    this.assetOptions.push(valueResponse);
-    this.assetOptions.push(valueResponse);
-    this.assetOptions.push(valueResponse);
+   
   },
   watch: {
     search(val) {
@@ -264,5 +272,7 @@ export default {
 <style >
   .card-new-asset {
     padding: 50px;
+    width: 440px;
+    height: 700px;
   }
 </style>

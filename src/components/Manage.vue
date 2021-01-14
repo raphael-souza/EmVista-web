@@ -4,30 +4,32 @@
   <div id="manage">
     <v-row>
       <v-col cols="4">
-        <v-expansion-panels popout>
-          <v-expansion-panel v-for="(asset, i) in assetsList" :key="i">
-            <v-expansion-panel-header>
-              <v-row>
-                <v-col cols="2">
-                  {{ asset.code }}
-                </v-col>
-                <v-col cols="2">
-                  <v-icon v-if="i % 2 == 0" color="green darken-2"
-                    >trending_up</v-icon
-                  >
-                  <v-icon v-if="i % 2 != 0" color="red lighten-2 darken-2"
-                    >trending_down</v-icon
-                  >
-                </v-col>
+        <v-card style="height: 502px;">
+          <v-card-title>Detalhamento de ativos</v-card-title>
+          <v-expansion-panels popout>
+            <v-expansion-panel v-for="(asset, i) in assetsList" :key="i">
+              <v-expansion-panel-header>
+                <v-row>
+                  <v-col cols="2">
+                    {{ asset.code }}
+                  </v-col>
+                  <v-col cols="2">
+                    <v-icon v-if="i % 2 == 0" color="green darken-2"
+                      >trending_up</v-icon
+                    >
+                    <v-icon v-if="i % 2 != 0" color="red lighten-2 darken-2"
+                      >trending_down</v-icon
+                    >
+                  </v-col>
 
-                <v-col cols="4" style="font-size: small">
-                  <span>Variação: </span>
-                  <span v-if="i % 2 == 0"> +0,5% </span>
-                  <span v-if="i % 2 != 0"> -0,9% </span>
-                </v-col>
-              </v-row>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
+                  <v-col cols="4" style="font-size: small">
+                    <span>Variação: </span>
+                    <span v-if="i % 2 == 0"> +0,5% </span>
+                    <span v-if="i % 2 != 0"> -0,9% </span>
+                  </v-col>
+                </v-row>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
                 <v-row>
                   <v-col cols="6" class="d-flex justify-space-between caption">
                     <v-icon color="warning">request_quote</v-icon> Preço
@@ -77,13 +79,15 @@
                     }}</span>
                   </v-col>
                 </v-row>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </v-card>
       </v-col>
 
       <v-col cols="4">
-        <v-card max-width="400" class="mx-auto">
+        <v-card  class="mx-auto">
+          <v-card-title>Distribuição na carteira</v-card-title>
           <ChartDoughnut v-bind:assetList="assetsList"> </ChartDoughnut>
         </v-card>
       </v-col>
@@ -106,16 +110,14 @@ export default {
   }),
   beforeMount() {
     console.log("antes da montagem!!!!!");
+    
+  },
+  mounted() {},
+  created() {
     axios.get("http://localhost:3333/financial-assets").then((response) => {
       this.assetsList = response.data;
     });
-
-  },
-  mounted() {
-    
-  },
-  created() {
-    console.log('criou aqui');
+    console.log("criou aqui");
   },
   methods: {
     getAssets() {},

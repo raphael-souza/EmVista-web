@@ -1,5 +1,4 @@
 
-
 <script>
 import {Doughnut} from 'vue-chartjs'
 
@@ -33,6 +32,7 @@ export default {
       let color = this.color[Math.floor(Math.random() * this.color.length)]
       this.dataChart.color.push(color)
     });
+    console.log('dados do gráfico ok')
   },
   mounted () {
     // Overwriting base render method with actual data.
@@ -40,7 +40,7 @@ export default {
       labels: this.dataChart.code,
       datasets: [
         {
-          label: 'GitHub Commits',
+          label: 'Distribuição de ativo',
           backgroundColor: this.dataChart.color,
           data: this.dataChart.amount
         }

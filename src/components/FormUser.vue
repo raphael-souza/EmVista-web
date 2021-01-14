@@ -1,6 +1,7 @@
 <template>
   <v-container>
-    <h1>Projeto EmVista</h1>
+    <v-card style="    width: 600px;padding: 50px;">
+       <v-card-title> Insira seus dados </v-card-title>
 
     <v-form ref="form" v-model="valid" lazy-validation>
       <v-text-field
@@ -43,8 +44,12 @@
       <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
         Cadastrar
       </v-btn>
+        <router-link to="/home"> voltar</router-link>
+
 
     </v-form>
+    </v-card>
+   
   </v-container>
 </template>
 
