@@ -30,7 +30,7 @@
         </v-menu>
       </v-row>
 
-      <v-row justify="space-around">
+      <v-row >
         <v-autocomplete
           v-model="asset.code"
           :loading="loading"

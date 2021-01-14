@@ -20,7 +20,7 @@
     <v-spacer></v-spacer>
     <v-card id="create-task">
         <v-row><h3>Criar tarefa</h3></v-row>  
-      <v-row justify="space-between">
+      <v-row >
         <v-col cols="12" md="4">
           <v-form ref="form">
             <v-text-field v-model="task.title" label="Título"></v-text-field>
