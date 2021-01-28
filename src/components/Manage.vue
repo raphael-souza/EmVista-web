@@ -114,6 +114,8 @@ export default {
   },
   mounted() {},
   created() {
+    localStorage.setItem('salveiNoLocalStorage', 'valorQueFoiSalvo');
+
     axios.get("http://localhost:3333/financial-assets").then((response) => {
       this.assetsList = response.data;
     });

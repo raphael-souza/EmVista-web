@@ -7,14 +7,12 @@
       <v-text-field
         v-model="name"
         :counter="15"
-        :rules="nameRules"
         label="Name"
         required
       ></v-text-field>
 
       <v-text-field
         v-model="email"
-        :rules="emailRules"
         label="E-mail"
         required
       ></v-text-field>
@@ -22,7 +20,6 @@
       <v-text-field
         v-model="password"
         :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-        :rules="[rules.required, rules.min]"
         :type="show1 ? 'text' : 'password'"
         name="input-10-1"
         label="Normal with hint text"
@@ -33,7 +30,6 @@
 
       <v-text-field
         v-model="confirmPassword"
-        :rules="[rules.required, rules.min]"
         :type="show1 ? 'text' : 'password'"
         name="input-10-1"
         label="Normal with hint text"
@@ -41,7 +37,7 @@
         counter
       ></v-text-field>
 
-      <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
+      <v-btn color="success" class="mr-4">
         Cadastrar
       </v-btn>
         <router-link to="/home"> voltar</router-link>

@@ -29,7 +29,7 @@ const router = new VueRouter({
         }, 
       ]
     },
-    { path: "/", component: Home },
+    { path: "*", redirect: '/home' },
     { path: "/dashboard", component: Dashboard,
       children: [
         {
