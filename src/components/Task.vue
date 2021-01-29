@@ -68,13 +68,13 @@ export default {
     };
   },
   mounted() {
-    axios.get("http://localhost:3333/tasks").then((response) => {
+    axios.get("https://emvistaapi.herokuapp.com/tasks").then((response) => {
       this.allTasks = response.data;
     });
   },
   methods: {
     savetask() {
-      axios.post("http://localhost:3333/task", this.task).then(
+      axios.post("https://emvistaapi.herokuapp.com/task", this.task).then(
         (response) => {
           if (response.status == 200) {
             this.allTasks.push(this.task);

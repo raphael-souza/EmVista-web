@@ -116,7 +116,7 @@ export default {
   created() {
     localStorage.setItem('salveiNoLocalStorage', 'valorQueFoiSalvo');
 
-    axios.get("http://localhost:3333/financial-assets").then((response) => {
+    axios.get("https://emvistaapi.herokuapp.com/financial-assets").then((response) => {
       this.assetsList = response.data;
     });
     console.log("criou aqui");

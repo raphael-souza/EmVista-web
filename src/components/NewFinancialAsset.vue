@@ -256,9 +256,9 @@ export default {
     saveAsset() {
       // request this.asset
       console.log('save my assets')
-      axios.post("http://localhost:3333/financial-asset", this.asset).then(
+      axios.post("https://emvistaapi.herokuapp.com/financial-asset", this.asset).then(
         (response) => {
-          if (response) console.log('ok');
+          if (response) console.log('ok - Ativo foi salvo!');
         },
         (error) => {
           console.log('error Save Financial Asset - ' + error );
