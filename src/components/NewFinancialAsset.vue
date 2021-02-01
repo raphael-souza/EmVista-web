@@ -120,7 +120,19 @@
       </v-btn>
     <br>
     <v-sheet style="font-size: 12px;     background: bisque;">{{ asset }} </v-sheet>
+    <div class="text-center">
+      <v-progress-circular
+        v-if="inProgress"
+        :size="50"
+        color="primary"
+        indeterminate
+      ></v-progress-circular>
+      
+      <div v-if="messageConfirmSavedAsset.show">
+        <label color="light-green lighten-2">{{ messageConfirmSavedAsset.message }}</label>
+      </div>
 
+    </div>
     </v-card>
   </v-row>
 </template>
@@ -225,6 +237,8 @@ export default {
         { name: "VIA VAREJO", code: "VVAR3", fullName: "VVAR3 - VIA VAREJO" },
         { name: "WEG", code: "WEGE3", fullName: "WEGE3 - WEG" },
       ],
+      inProgress: false,
+      messageConfirmSavedAsset:{show: false, message: ''}
     };
   },
   created() {
@@ -255,16 +269,38 @@ export default {
     },
     saveAsset() {
       // request this.asset
-      console.log('save my assets')
-      axios.post("https://emvistaapi.herokuapp.com/financial-asset", this.asset).then(
+      this.inProgress = true;
+      axios.post( "http://localhost:3333/financial-asset", this.asset).then(
         (response) => {
-          if (response) console.log('ok - Ativo foi salvo!');
+          if (response) {
+            this.inProgress = false;
+            this.messageConfirmSavedAsset.show = true;
+            this.messageConfirmSavedAsset.message = 'Ativo salvo com sucesso!';
+          }
         },
         (error) => {
-          console.log('error Save Financial Asset - ' + error );
+          this.messageConfirmSavedAsset.message = "Erro ao salvar, tente mais tarde. :(";
+          console.log(error);
         }
+
       );
+
+      this.resetForm();
+      setTimeout(() => this.messageConfirmSavedAsset.show = false, 2000);
+
     },
+    resetForm() {
+       this.asset = {
+        type: {type: 1, text: "Ações"},
+        code: "",
+        broker: "",
+        purchaseDate: "",
+        amount: 1,
+        purchasePrice: "",
+        amountInvested: 0,
+      }
+    },
+
   },
 };
 </script>
