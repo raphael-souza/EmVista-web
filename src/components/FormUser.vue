@@ -7,7 +7,7 @@
       <v-text-field
         v-model="name"
         :counter="15"
-        label="Name"
+        label="Nome"
         required
       ></v-text-field>
 
@@ -22,8 +22,8 @@
         :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
         :type="show1 ? 'text' : 'password'"
         name="input-10-1"
-        label="Normal with hint text"
-        hint="At least 8 characters"
+        label="Insira sua senha"
+        hint="Senha deve conter 8 caractes ou mais"
         counter
         @click:append="show1 = !show1"
       ></v-text-field>
@@ -32,12 +32,11 @@
         v-model="confirmPassword"
         :type="show1 ? 'text' : 'password'"
         name="input-10-1"
-        label="Normal with hint text"
-        hint="At least 8 characters"
+        label="Insira sua senha novamente"
         counter
       ></v-text-field>
 
-      <v-btn color="success" class="mr-4">
+      <v-btn color="success" @click="submitFormuser()" class="mr-4">
         Cadastrar
       </v-btn>
         <router-link to="/home"> voltar</router-link>
@@ -50,22 +49,35 @@
 </template>
 
 <script>
+import {saveUser} from '../services/user.js';
 export default {
   name: "FormUser",
 
- data () {
-      return {
-        show1: false,
-        password: '',
-        confirmPassword: '',
-        name: '',
-        email: '',
-        rules: {
-          required: value => !!value || 'Required.',
-          min: v => v.length >= 8 || 'Min 8 characters',
-          emailMatch: () => ('The email and password you entered don\'t match'),
-        },
-      }
+ data: () => ({
+    show1: false,
+    password: '',
+    confirmPassword: '',
+    name: '',
+    email: '',
+    rules: {
+      required: value => !!value || 'Required.',
+      min: v => v.length >= 8 || 'Min 8 characters',
+      emailMatch: () => ('The email and password you entered don\'t match'),
     },
+  }),
+
+  methods: {
+    submitFormuser() {
+      let user = {
+        name: this.name,
+        password: this.password,
+        email: this.email
+      }
+     saveUser(user).then((response) => {
+       console.log(`------> ${response}`)
+     })
+    }
+  },
+    
 };
 </script>
