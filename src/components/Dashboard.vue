@@ -17,7 +17,7 @@
             <br>
              <router-link to="/dashboard/manage">Meus Ativos</router-link>
             <br>
-            <router-link to="/dashboard/new-user">Novo usuário</router-link>
+            <!-- <router-link to="/dashboard/new-user">Novo usuário</router-link> -->
             <br>
             <!-- <router-link to="/task">Task</router-link> -->
             <br>

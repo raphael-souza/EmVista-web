@@ -3,7 +3,7 @@
     <v-card style="    width: 600px;padding: 50px;">
        <v-card-title> Insira seus dados </v-card-title>
 
-    <v-form ref="form" v-model="valid" lazy-validation>
+    <v-form ref="form" lazy-validation>
       <v-text-field
         v-model="name"
         :counter="15"
@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import {saveUser} from '../services/user.js';
+import {getToken, saveUser} from '../services/user.js';
 export default {
   name: "FormUser",
 
@@ -74,7 +74,14 @@ export default {
         email: this.email
       }
      saveUser(user).then((response) => {
-       console.log(`------> ${response}`)
+       const status =  JSON.stringify(response.status)
+
+       if (status) {
+         getToken(JSON.stringify(response.data.token));
+         this.$router.push("/dashboard");
+       } else {
+        //  redirecionar para erro no cadastro
+       }
      })
     }
   },
