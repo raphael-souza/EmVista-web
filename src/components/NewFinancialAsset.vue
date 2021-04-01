@@ -18,29 +18,6 @@
           filled
           rounded
         ></v-select>
-        <!-- <v-menu transition="scroll-y-transition">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn color="primary" class="ma-2" v-bind="attrs" v-on="on">
-              Tipo de Ativo
-            </v-btn>
-          </template>
-          <v-list dense>
-            <v-list-item-group v-model="asset.type" color="primary">
-              <v-list-item
-                v-for="(asset, index) in assetOptions"
-                :key="index"
-                :value="asset.id"
-              >
-                <v-list-item-icon>
-                  <v-icon v-text="asset.icon"></v-icon>
-                </v-list-item-icon>
-                <v-list-item-content>
-                  <v-list-item-title v-text="asset.text"></v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list-item-group>
-          </v-list>
-        </v-menu> -->
       </v-row>
 
       <v-row >

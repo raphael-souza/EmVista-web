@@ -4,31 +4,32 @@
       <v-text-field
         v-model="email"
         label="E-mail"
-        required
-        filled
-        dense
-        rounded
+        solo
       ></v-text-field>
 
-      <v-text-field
+      <VuePassword
         v-model="password"
-        label="Senha"
-        filled
-        dense
-        rounded
+        :strength="validateStrongPassword()"
+        type="password"
+        placeholder="Senha"
         required
-      ></v-text-field>
-      <a style="margin-left: 60%" href="">Esqueci minha senha</a>
-      <br />
-      <v-btn
-        depressed
-        style="margin-left: 30%"
-        color="primary"
-        horizontal
-        @click="login()"
-      >
-        Entrar
-      </v-btn>
+        outlined
+      />
+      <v-row align="end" justify="end"> 
+        <a  href="">Esqueci minha senha</a>
+      </v-row>
+      <v-row align="center" justify="center">
+        <v-btn
+          depressed
+          class="btn-submit"
+          color="primary"
+          horizontal
+          @click="login()"
+        >
+          Entrar
+        </v-btn>
+      </v-row>
+
       <br />
       <span style="margin-left: 15%">
         Não tem conta?
@@ -39,25 +40,71 @@
 </template>
 
 <script>
+import VuePassword from 'vue-password'
+
 export default {
   name: "Login",
 
-  data() {
-    return {
-    email: '',
-    password: ''
-   }
+  components: {
+    VuePassword,
   },
+
+  data: () => ({
+    email: '',
+    password: '',
+    strength: 0,
+
+  }),
   methods: {
     login() {
       this.$router.push("dashboard");
     },
+
+    validateStrongPassword() {
+      let strong = 0
+      const pwdLength = this.password.length
+      if (pwdLength == 1) {
+          strong = 0
+      } 
+      if (pwdLength > 1 && pwdLength < 3 ) {
+        strong = 1
+      }
+      if (pwdLength == 3) {
+        strong = 2
+      }
+      if (pwdLength > 3 && pwdLength <= 5) {
+        strong = 3
+      }
+      if (pwdLength > 5) {
+        strong = 4
+      }
+      console.log('--- > strong ' + strong)
+
+      return strong
+    }
   },
 };
 </script>
 
 <style>
-.card-login {
-  padding: 10px;
-}
+  body {
+    background: aquamarine;
+  }
+  .card-login {
+    width: 66vh;
+    padding: 27px;
+    margin: 31vh 34vh 37vh 34vh;
+  }
+  .v-input__slot{
+    border: solid 1px #382d2d42;
+  }
+
+  .v-btn {
+    
+    width: 30vh;
+  }
+  .row {
+    padding: 15px 5px 5px;
+  }
+  
 </style>

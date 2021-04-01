@@ -21,6 +21,16 @@ export default new Vuetify({
         success: '#4CAF50',
         warning: '#eb01f8',
       },
+      generator: 
+      {
+        primary: '#009688',
+        secondary: '#cddc39',
+        accent: '#607d8b',
+        error: '#f44336',
+        warning: '#ffc107',
+        info: '#4caf50',
+        success: '#8bc34a'
+        }
     },
   },
 });
