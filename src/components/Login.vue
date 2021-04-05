@@ -41,7 +41,7 @@
 
 <script>
 import VuePassword from 'vue-password'
-
+import { authUser } from '../services/auth.js'
 export default {
   name: "Login",
 
@@ -57,7 +57,7 @@ export default {
   }),
   methods: {
     login() {
-      this.$router.push("dashboard");
+       this.checkAuth()
     },
 
     validateStrongPassword() {
@@ -81,6 +81,24 @@ export default {
       console.log('--- > strong ' + strong)
 
       return strong
+    },
+
+    checkAuth() {
+      authUser(this.email, this.password).then((response) => {
+        const {status} = response
+
+        if (status === 200) {
+          // login validado com sucesso
+          localStorage.user = JSON.stringify(response.data.user);
+          localStorage.token = response.data.token
+          console.log('----- login feito com sucesso!');
+          this.$router.push("dashboard");
+        } else {
+          // erro na validação
+          console.log('----- login não foi realizado');
+
+        }
+      })
     }
   },
 };

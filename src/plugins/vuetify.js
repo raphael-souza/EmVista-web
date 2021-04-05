@@ -11,6 +11,7 @@ export default new Vuetify({
         secondary: '#009688',
         accent: colors.shades.black,
         error: colors.red.accent3,
+        gray: '#c3c7c8'
       },
       dark: {
         primary: '#1976D2',
@@ -21,16 +22,6 @@ export default new Vuetify({
         success: '#4CAF50',
         warning: '#eb01f8',
       },
-      generator: 
-      {
-        primary: '#009688',
-        secondary: '#cddc39',
-        accent: '#607d8b',
-        error: '#f44336',
-        warning: '#ffc107',
-        info: '#4caf50',
-        success: '#8bc34a'
-        }
     },
   },
 });

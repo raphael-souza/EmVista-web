@@ -4,8 +4,13 @@
   <div id="manage">
     <v-row>
       <v-col cols="4">
-        <v-card style="height: 502px;">
-          <v-card-title>Detalhamento de ativos</v-card-title>
+        <!-- detalhamento dos ativos  -->
+        <v-card  v-if="assetsList.length > 0"
+          height="502px"
+          align="center" 
+          justify="center"
+        >
+          <v-card-title> Detalhamento de ativos</v-card-title>
           <v-expansion-panels popout>
             <v-expansion-panel v-for="(asset, i) in assetsList" :key="i">
               <v-expansion-panel-header>
@@ -83,6 +88,19 @@
             </v-expansion-panel>
           </v-expansion-panels>
         </v-card>
+
+        <!-- detalhamento de ativos vazio -->
+        <v-card 
+          v-if="assetsList.length == 0" 
+          height="502px"
+          align="center" 
+          justify="center"
+        >
+         <v-card-title> você ainda possui ativos cadastrados.</v-card-title>
+
+          <v-icon size="50" color="gray">add_circle</v-icon>
+        </v-card>
+
       </v-col>
 
       <v-col cols="4">
@@ -97,9 +115,8 @@
 
 
 <script>
-import axios from "axios/dist/axios";
 import ChartDoughnut from "./charts/Doughnut";
-
+import { getFinAssetByUserId } from '../services/financialAsset.js'
 export default {
   components: {
     ChartDoughnut,
@@ -109,17 +126,14 @@ export default {
     assetsList: [],
   }),
   beforeMount() {
-    console.log("antes da montagem!!!!!");
     
   },
   mounted() {},
   created() {
-    localStorage.setItem('salveiNoLocalStorage', 'valorQueFoiSalvo');
-
-    axios.get("http://localhost:3333/financial-assets").then((response) => {
+    getFinAssetByUserId('8f331b9e-1333-4288-9c54-4c1e510392aa').then((response) => {
       this.assetsList = response.data;
     });
-    console.log("criou aqui");
+    console.log("criou aqui Manage - inserindo ativos - " +  this.assetsList);
   },
   methods: {
     getAssets() {},
