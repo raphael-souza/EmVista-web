@@ -11,14 +11,23 @@
         </v-app-bar>
 
         <v-navigation-drawer app>
-          <v-container style="    
-            border: solid 3px #afafaf;
-            height: 180px;
-            padding: 10px;
-            background: #e5e4e4;"
+           <v-card
+            color="#385F73"
+            dark
           >
-            Area do perfil
-          </v-container>
+            <v-card-title class="headline">
+              {{ user.name }}
+            </v-card-title>
+            <v-card-subtitle>
+              email: {{user.email}}
+              <br>
+              id: {{user.id}}
+            </v-card-subtitle>
+           
+            <br>
+          </v-card>
+
+
           <!-- -->
           <div class="left-bar">
             <router-link to="/dashboard">Dashboard</router-link>
@@ -57,14 +66,12 @@ export default {
   },
 
   data: () => ({
-    //
+    user: JSON.parse(localStorage.user)
   }),
 
-  created () { 
-      console.log('criando dashboard')
-    
+  created () {    
     if (this.checkAuth(localStorage.token)){
-      console.log('econtrou o token')
+      console.log('DASHBOARD - econtrou o token')
     } else {
       this.goBack();
     }

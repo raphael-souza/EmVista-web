@@ -86,18 +86,22 @@ export default {
     checkAuth() {
       authUser(this.email, this.password).then((response) => {
         const {status} = response
-
         if (status === 200) {
           // login validado com sucesso
-          localStorage.user = JSON.stringify(response.data.user);
+          console.log('----- login!');
+          console.log(response.data.user);
+          localStorage.user = response.data.user;
           localStorage.token = response.data.token
-          console.log('----- login feito com sucesso!');
+
           this.$router.push("dashboard");
         } else {
           // erro na validação
           console.log('----- login não foi realizado');
 
         }
+      }, error => {
+        console.log(error)
+        alert("Erro ao fazer Login. tente novamente com email e senha válido!");
       })
     }
   },
