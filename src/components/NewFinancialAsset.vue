@@ -115,10 +115,9 @@
 </template>
 
 <script>
-import axios from "axios/dist/axios";
+  import { saveAsset } from '../services/financialAsset';
 
 export default {
-  
   data() {
     return {
       tab: null,
@@ -257,9 +256,8 @@ export default {
       }
 
       console.log("dados para salvar novo ativo: ")
-      console.log(newAsset);
 
-      axios.post( "http://localhost:3000/financial-asset", newAsset).then(
+      saveAsset(newAsset).then(
         (response) => {
           if (response) {
             this.inProgress = false;
