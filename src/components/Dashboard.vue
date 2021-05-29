@@ -66,7 +66,11 @@ export default {
   },
 
   data: () => ({
-    user: JSON.parse(localStorage.user)
+    user: {
+      name: localStorage.userName || '',
+      id: localStorage.userId || '',
+      email: localStorage.userEmail || ''
+    } 
   }),
 
   created () {    

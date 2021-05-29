@@ -2,36 +2,23 @@
 <template>
   <!-- Listar Ações  -->
   <div id="manage">
+    <v-btn color="success" @click="getAssets()">atualizar</v-btn>
     <v-row>
       <v-col cols="4">
         <!-- detalhamento dos ativos  -->
         <v-card  v-if="assetsList.length > 0"
-          height="502px"
+          height="100%"
           align="center" 
           justify="center"
         >
           <v-card-title> Detalhamento de ativos</v-card-title>
-          <v-expansion-panels popout>
+          
+          <v-expansion-panels popout style="padding: 10px">
             <v-expansion-panel v-for="(asset, i) in assetsList" :key="i">
               <v-expansion-panel-header>
                 <v-row>
-                  <v-col cols="2">
-                    {{ asset.code }}
-                  </v-col>
-                  <v-col cols="2">
-                    <v-icon v-if="i % 2 == 0" color="green darken-2"
-                      >trending_up</v-icon
-                    >
-                    <v-icon v-if="i % 2 != 0" color="red lighten-2 darken-2"
-                      >trending_down</v-icon
-                    >
-                  </v-col>
-
-                  <v-col cols="4" style="font-size: small">
-                    <span>Variação: </span>
-                    <span v-if="i % 2 == 0"> +0,5% </span>
-                    <span v-if="i % 2 != 0"> -0,9% </span>
-                  </v-col>
+                  {{ asset.code }}
+                  
                 </v-row>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
@@ -130,13 +117,18 @@ export default {
   },
   mounted() {},
   created() {
-    getFinAssetByUserId('8f331b9e-1333-4288-9c54-4c1e510392aa').then((response) => {
-      this.assetsList = response.data;
-    });
-    console.log("criou aqui Manage - inserindo ativos - " +  this.assetsList);
+    console.log("criou manage");
+    console.log(localStorage.userId);
+    this.getAssets();
   },
   methods: {
-    getAssets() {},
+    getAssets() {
+      getFinAssetByUserId(localStorage.userId)
+      .then((response) => {
+        this.assetsList = response.data.ativos;
+        console.log(response)
+      });
+    },
   },
 };
 </script>

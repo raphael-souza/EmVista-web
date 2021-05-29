@@ -4,7 +4,7 @@
     <router-view></router-view>
     
     
-    <v-footer padless style="background: rgb(243, 150, 0);">
+    <v-footer padless style="background: rgb(243, 150, 0); margin-top: 90px">
       <v-col class="text-center" cols="12">
         {{ new Date().getFullYear() }} — <strong>R2S tec.</strong>
       </v-col>

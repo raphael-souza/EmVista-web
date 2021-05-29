@@ -247,7 +247,19 @@ export default {
     saveAsset() {
       // request this.asset
       this.inProgress = true;
-      axios.post( "http://localhost:3333/financial-asset", this.asset).then(
+      const newAsset = {
+        userId: localStorage.userId,
+        code: this.asset.code, 
+        broker: this.asset.broker, 
+        purchaseDate: this.asset.purchaseDate,
+        typeNegociation: "sell",
+        amount: this.asset.amount, 
+      }
+
+      console.log("dados para salvar novo ativo: ")
+      console.log(newAsset);
+
+      axios.post( "http://localhost:3000/financial-asset", newAsset).then(
         (response) => {
           if (response) {
             this.inProgress = false;

@@ -90,7 +90,11 @@ export default {
           // login validado com sucesso
           console.log('----- login!');
           console.log(response.data.user);
-          localStorage.user = response.data.user;
+
+          localStorage.userId = response.data.user.id;
+          localStorage.userName = response.data.user.name;
+          localStorage.userEmail = response.data.user.email;
+
           localStorage.token = response.data.token
 
           this.$router.push("dashboard");
