@@ -10,12 +10,9 @@
 
         </v-app-bar>
 
-        <v-navigation-drawer app>
-           <v-card
-            color="#385F73"
-            dark
-          >
-            <v-card-title class="headline">
+        <v-navigation-drawer app class="side-bar" dark>
+           <v-card class="side-bar" >
+            <v-card-title class=" headline">
               {{ user.name }}
             </v-card-title>
             <v-card-subtitle>
@@ -29,12 +26,11 @@
 
 
           <!-- -->
-          <div class="left-bar">
-            <router-link to="/dashboard">Dashboard</router-link>
-            <br>
-             <router-link to="/dashboard/manage">Meus Ativos</router-link>
-            <br>
-            <router-link to="/dashboard/new-financial-asset"> Inserir Ativo </router-link>
+          <div class="item-menu">
+            
+            <v-row class="item-row"> <router-link to="/dashboard"><span> Dashboard </span> </router-link> </v-row>
+            <v-row class="item-row"><router-link to="/dashboard/manage"><span>Meus Ativos</span></router-link> </v-row>
+            <v-row class="item-row"><router-link to="/dashboard/new-financial-asset"><span> Inserir Ativo </span></router-link> </v-row>
           </div>
 
         </v-navigation-drawer>
@@ -97,8 +93,36 @@ export default {
 </script>
 
 <style >
-.left-bar {
+span {
+    border-left-style: inset;
+    border-left-color: #f6f3f2;
+    border-left-width: 3px;
+    padding: 2px 9px;
+    color: #ececec;
+    font-size: larger;
+    cursor: pointer;
+    font-style: initial;
+    
+  }
+
+  .item-row:hover {
+    background: rgba(177, 177, 180, 0.103);
+  }
+  a { 
+    color: inherit;
+    text-decoration: none;
+  }
+
+.item-menu {
   margin-left: 20px;
   margin-top: 20px;
+  
+}
+#main {
+  background-color: rgba(229,231,235)
+}
+.side-bar {
+  background-color: rgba(17,24,39) !important;
+  color: #ececec;
 }
 </style>
