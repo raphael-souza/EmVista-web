@@ -7,14 +7,18 @@
         solo
       ></v-text-field>
 
-      <VuePassword
+      <v-text-field
         v-model="password"
-        :strength="validateStrongPassword()"
-        type="password"
-        placeholder="Senha"
-        required
-        outlined
-      />
+        :append-icon="showPasword ? 'mdi-eye' : 'mdi-eye-off'"
+        :type="showPasword ? 'text' : 'password'"
+        name="input-10-1"
+        label="Insira sua senha"
+        hint="Senha deve conter 8 caractes ou mais"
+
+        @click:append="showPasword = !showPasword"
+      ></v-text-field>
+
+
       <v-row align="end" justify="end"> 
         <a  href="">Esqueci minha senha</a>
       </v-row>
@@ -33,54 +37,27 @@
       <br />
       <span style="margin-left: 15%">
         Não tem conta?
-        <router-link to="/home/sign-in">Faça seu cadastro</router-link>
+        <router-link to="/home/sign-in">Faça seu cadastro.</router-link>
       </span>
     </v-form>
   </v-card>
 </template>
 
 <script>
-import VuePassword from 'vue-password'
 import { authUser } from '../services/auth.js'
 export default {
   name: "Login",
-
-  components: {
-    VuePassword,
-  },
 
   data: () => ({
     email: '',
     password: '',
     strength: 0,
+    showPasword: false
 
   }),
   methods: {
     login() {
        this.checkAuth()
-    },
-
-    validateStrongPassword() {
-      let strong = 0
-      const pwdLength = this.password.length
-      if (pwdLength == 1) {
-          strong = 0
-      } 
-      if (pwdLength > 1 && pwdLength < 3 ) {
-        strong = 1
-      }
-      if (pwdLength == 3) {
-        strong = 2
-      }
-      if (pwdLength > 3 && pwdLength <= 5) {
-        strong = 3
-      }
-      if (pwdLength > 5) {
-        strong = 4
-      }
-      console.log('--- > strong ' + strong)
-
-      return strong
     },
 
     checkAuth() {
