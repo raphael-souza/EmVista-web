@@ -86,7 +86,7 @@ export default {
 
   methods: {
     submitFormuser() {
-      if (this.formIsValid()) {
+      if (!this.formIsValid()) {
         console.log("form inválido")
         return;
       }
@@ -130,7 +130,8 @@ export default {
       return strong
     },
   formIsValid() {
-    return this.name && this.password === this.confirmPassword && this.email
+    console.log("senha ok --> " + this.password === this.confirmPassword);
+    return !!this.name && (this.password === this.confirmPassword) && !!this.email
   }
   },
     

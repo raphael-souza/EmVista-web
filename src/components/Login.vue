@@ -81,6 +81,7 @@ export default {
           localStorage.userEmail = response.data.user.email;
 
           localStorage.token = response.data.token
+          console.log('----- login feito com sucesso! redirecionar para dashboard');
 
           this.$router.push("dashboard");
         } else {

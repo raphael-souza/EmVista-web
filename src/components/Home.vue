@@ -11,7 +11,10 @@
 export default {
   name: "Home",
 
- data () {   
+  data () {
+  },
+  created() {
+    localStorage.clear();
   },
   methods: {
     login() {
