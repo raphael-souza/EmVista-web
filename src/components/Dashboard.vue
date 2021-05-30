@@ -93,7 +93,7 @@ export default {
 </script>
 
 <style >
-span {
+.item-row.span{
     border-left-style: inset;
     border-left-color: #f6f3f2;
     border-left-width: 3px;
