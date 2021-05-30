@@ -5,6 +5,7 @@
         v-model="email"
         label="E-mail"
         solo
+        :rules="emailRules"
       ></v-text-field>
 
       <v-text-field
@@ -13,8 +14,7 @@
         :type="showPasword ? 'text' : 'password'"
         name="input-10-1"
         label="Insira sua senha"
-        hint="Senha deve conter 8 caractes ou mais"
-
+        :rules="pwdlRules"
         @click:append="showPasword = !showPasword"
       ></v-text-field>
 
@@ -52,7 +52,15 @@ export default {
     email: '',
     password: '',
     strength: 0,
-    showPasword: false
+    showPasword: false,
+    emailRules: [
+        v => !!v || 'campo email é obrigatório!',
+        v => /.+@.+/.test(v) || 'E-mail deve ser válido!',
+    ],
+    pwdlRules: [
+       value => !!value || 'preencha com sua senha!',
+       v => v.length >= 8 || 'Deve conter pelo menos 8 caracteres!',
+    ],
 
   }),
   methods: {

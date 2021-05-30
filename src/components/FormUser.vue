@@ -1,7 +1,7 @@
 <template>
   
   <v-container>
-    <v-card style="    width: 600px;padding: 50px;">
+    <v-card style="width: 600px;padding: 50px;">
        <v-card-title> Insira seus dados </v-card-title>
 
     <v-form ref="form" @submit="submitFormuser()"  lazy-validation>
@@ -42,10 +42,13 @@
         required
       ></v-text-field>
 
-      <v-btn color="success" :disabled="!formIsValid()" type="submit" class="mr-4">
-        Cadastrar
-      </v-btn>
+      <div align="left" justify="center">
+        <v-btn color="success" :disabled="!formIsValid()" type="submit" class="mr-4">
+          Cadastrar
+        </v-btn>
         <router-link to="/home"> voltar</router-link>
+      </div>
+     
 
 
     </v-form>
@@ -133,3 +136,10 @@ export default {
     
 };
 </script>
+
+<style scoped>
+  .mr-4{
+    width: 146px;
+  }
+
+</style>

@@ -1,7 +1,10 @@
 <template>
   <v-app class=" template-style">
     <!-- If using vue-router -->
+    <div align="center" justify="center">
     <router-view></router-view>
+
+    </div>
     
     
     <v-footer padless style="background: rgb(243, 150, 0);">
